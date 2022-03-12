@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2021",
+    "declaration": true,
+    "outDir": "dist"
+  },
+  "include": ["src", "decs.d.ts"],
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "kinematics",
+  "version": "0.0.1",
+  "description": "collection of kinematic utilities",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc --project .",
+    "dev": "ts-node-dev src/main.ts",
+    "start": "npm run build && node dist/main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^17.0.21",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2"
+  },
+  "dependencies": {
+    "ts-node-dev": "^1.1.8"
+  }
+}
