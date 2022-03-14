@@ -24,6 +24,7 @@
     "typescript": "^4.6.2"
   },
   "dependencies": {
+    "mathjs": "^10.4.0",
     "ts-node-dev": "^1.1.8"
   }
 }

@@ -1,6 +1,9 @@
-import { inertia_cube } from "./inertia";
-import { LengthDimension, MassDimension } from "./units/dimensions";
+import { format, unit } from 'mathjs'
+import { inertia_cube_center, inertia_parallel_axis } from './inertia'
+import { s } from './util'
 
-const res = inertia_cube(new MassDimension(2, 'mg'), new LengthDimension(0.2, 'um'))
+const a = inertia_cube_center('2mm', '3mm', '3g')
+const res = inertia_parallel_axis(a, '3g', '5mm')
 
-console.log(res)
+console.log(s(a))
+console.log(s(res))
