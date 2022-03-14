@@ -7,6 +7,7 @@ export const toUnit = (u: Unit | string) => {
 
 export const onlyUnit = (unitString: string) => (u: Unit) => { if (!u.equalBase(unit(unitString))) throw new Error(unitString) }
 
+// some map would be more useful
 // export const onlyMass = (...u: Unit[]) => u.map(onlyUnit('kg'))
 // export const onlyLength = (...u: Unit[]) => u.map(onlyUnit('m'))
 // export const onlyInertia = (...u: Unit[]) => u.map(onlyUnit('kg * m^2'))
