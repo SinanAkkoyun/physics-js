@@ -45,6 +45,26 @@ export const inertia_cube = (a: Units, b: Units, m: Units): Unit =>
 const f_inertia_cube = compile('(1/12) * m * (a^2 + b^2)')
 
 /**
+ * Returns the moment of inertia of the following cube along it's edge:
+ * @example
+ *     ^
+ *     +-a-+
+ *     |   |
+ *     |   l        I=1/3 m (a^2)
+ *     |   |
+ *     +---+
+ *     |
+ * @param a Length
+ * @param m Mass
+ * @returns moment of inertia of a cube a,b with the mass m.
+ */
+ export const inertia_cube_edge = (a: Units, m: Units): Unit => 
+ calculate_eval(f_inertia_cube_edge,
+   {name: 'a', val: a, dim: 'm'},
+   {name: 'm', val: m, dim: 'kg'})
+const f_inertia_cube_edge = compile('(1/3) * m * (a^2)')
+
+/**
  * Returns the moment of inertia of the following cylinder along the axis x:
  * @example
  *     + +
