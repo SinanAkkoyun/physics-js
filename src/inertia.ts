@@ -16,7 +16,7 @@ import { calculate_eval, onlyUnit, s, toUnit } from './util/util'
  * @param d Distance
  * @returns offset inertia
  */
-export const inertia_parallel_axis = (inertia: Units, d: Units, m: Units) =>
+export const inertia_parallel_axis = (inertia: Units, d: Units, m: Units): Unit =>
   calculate_eval(f_inertia_parallel_axis,
     {name: 'I', val: inertia, dim: 'kg*m^2'},
     {name: 'm', val: m, dim: 'kg'},

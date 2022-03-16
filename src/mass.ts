@@ -1,6 +1,6 @@
 import { compile, evaluate, unit, Unit } from "mathjs";
 import { Units } from "./types/dimension";
-import { calculate_eval, onlyUnit, toUnit } from "./util/util";
+import { calculate_eval, onlyUnit, toUnit, u } from "./util/util";
 
 const materials = [
   'aluminium',
