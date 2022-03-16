@@ -6,7 +6,7 @@ export const toUnit = (u: Unit | string) => {
   return u
 }
 
-export const onlyUnit = (unitString: string) => (u: Unit) => { if (!u.equalBase(unit(unitString))) throw new Error(unitString) }
+export const onlyUnit = (unitString: string) => (u: Unit) => { if (!u.equalBase(unit(unitString))) throw new Error(unitString); return u }
 
 export const s = (u: Unit) => format(u, {precision: 14})
 export const u = (unitString: string): Unit => unit(unitString)

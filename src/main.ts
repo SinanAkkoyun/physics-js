@@ -1,9 +1,8 @@
-import { format, unit } from 'mathjs'
-import { inertia_cube, inertia_parallel_axis } from './inertia'
+import { inertia_cube, inertia_cube_edge, inertia_parallel_axis } from './inertia'
+import { mass } from './mass'
 import { s } from './util/util'
 
-const a = inertia_cube('2mm', '3mm', '3g')
-const res = inertia_parallel_axis(a, '3g', '5mm')
+// POV arm inertia
 
-console.log(s(a))
-console.log(s(res))
+const hollow = mass('3', 'formlabs resin')
+const i = inertia_cube_edge('1.8mm', mass('1.8*2.2*1 mm^3', 'formlabs resin')) + 
