@@ -5,6 +5,8 @@ import { calculate_eval, onlyUnit, s, toUnit } from './util/util'
 // https://engineeringstatics.org/Chapter_10-moment-of-inertia-of-composite-shapes.html
 // https://engineeringstatics.org/parallel-axis-theorem-section.html#MOI-table
 
+// For simple composite shapes, you can simply add up positive moments of inertia. To create holes, however, you can subtract moments of inertia *if the subtracted object completely intersected with it's respective counterpart*
+
 /**
  * This will offset the axis of an object and returns the new inertia.
  * This only works when the new axis is parallel to the old one.
