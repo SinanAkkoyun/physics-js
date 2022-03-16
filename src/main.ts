@@ -31,5 +31,10 @@ console.log(`CoM sys: ${center_of_mass({m: counterMass, d: distance.multiply(u('
                            {m: add(add(cylMass, bearingMass), blockMass), d: comArm})} | CoM arm: ${comArm}`)
 
 console.log(`Centrifugal balance: ${subtract(add(add(cylMass, bearingMass), blockMass).multiply(comArm), counterMass.multiply(distance)).to('g um')}`)
+console.log(`Balance: ${solve((x: Unit) => subtract(add(add(cylMass, bearingMass), blockMass).multiply(comArm), counterMass.multiply(x)).to('g mm'), {
+  max: u('20mm'),
+  min: u('1mm'),
+  incr: u('10um')
+}, u('0g mm'))}`)
 
 console.log(`plastic: ${add(blockMass, cylMass)} | bearing: ${bearingMass}`)
