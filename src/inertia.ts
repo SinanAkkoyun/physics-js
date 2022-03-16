@@ -16,12 +16,12 @@ import { calculate_eval, onlyUnit, s, toUnit } from './util/util'
  * @param d Distance
  * @returns offset inertia
  */
-export const inertia_parallel_axis = (inertia: Units, m: Units, d: Units) =>
+export const inertia_parallel_axis = (inertia: Units, d: Units, m: Units) =>
   calculate_eval(f_inertia_parallel_axis,
     {name: 'I', val: inertia, dim: 'kg*m^2'},
     {name: 'm', val: m, dim: 'kg'},
     {name: 'd', val: d, dim: 'm'})
-    const f_inertia_parallel_axis = compile('I+m*d^2')
+const f_inertia_parallel_axis = compile('I+m*d^2')
 
 /**
  * Returns the moment of inertia of the following cube along the axis x:
