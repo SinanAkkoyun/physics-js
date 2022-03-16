@@ -1,5 +1,5 @@
 import { evaluate, unit, Unit } from "mathjs";
-import { onlyLength, onlyMass, toUnit, Units } from "./util";
+import { toUnit } from "./util/util";
 
 const materials = [
   'aluminium',
@@ -27,10 +27,3 @@ export const density = new Map<Materials, Unit>([
   ['chromium' , unit('7.15 g/cm^3')],
   ['nickel' , unit('8.9 g/cm^3')],
 ])
-
-export const inertia_cube = (a: Units, b: Units, m: Units): Unit => {
-  a = toUnit(a); b = toUnit(b); m = toUnit(m)
-  onlyLength(a, b); onlyMass(m)
-
-  return (evaluate('(1/12) * m * (a^2 + b^2)', {m,a,b}) as Unit)
-}

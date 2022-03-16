@@ -1,0 +1,1 @@
+export type AxisLocation = 'center' | 'center_x' | 'center_y' | 'edge_x' | 'edge_y'
