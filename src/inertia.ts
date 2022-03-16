@@ -24,10 +24,10 @@ export const inertia_parallel_axis = (inertia: Units, m: Units, d: Units) =>
 /**
  * Returns the moment of inertia of the following cube along the axis x:
  * @example
- *      a
- * +---------+
+ *      
+ * +----a----+
  * |         |
- * |    x    | b      I=1/12 m (a^2 + b^2)
+ * |    x    b        I=1/12 m (a^2 + b^2)
  * |         |
  * +---------+
  * @param a Length
@@ -47,8 +47,8 @@ const f_inertia_cube = compile('(1/12) * m * (a^2 + b^2)')
  * @example
  *     + +
  *  +       +
- * +    x----+        I=1/2 m r^2
- *  +     r +
+ * +    x--r-+        I=1/2 m r^2
+ *  +      +
  *     + +
  * 
  * @param r Length
@@ -60,6 +60,27 @@ const f_inertia_cube = compile('(1/12) * m * (a^2 + b^2)')
    {name: 'r', val: r, dim: 'm'},
    {name: 'm', val: m, dim: 'kg'})
 const f_inertia_cyl = compile('(1/2) * m * (r^2)')
+
+/**
+ * Returns the moment of inertia of the following cylinder along the axis x:
+ * @example
+ *    +++++
+ *  ++     ++
+ * ++   x-r1++        I=1/2 m (r1^2 + r2^2)
+ *  ++     ++
+ *    +++++
+ * ←---r2----→
+ * 
+ * @param r Length
+ * @param m Mass
+ * @returns moment of inertia of a cube a,b with the mass m.
+ */
+ export const inertia_hollow_cyl = (r1: Units, r2: Units, m: Units): Unit => 
+ calculate_eval(f_inertia_hollow_cyl,
+   {name: 'a', val: r1, dim: 'm'},
+   {name: 'b', val: r2, dim: 'm'},
+   {name: 'm', val: m, dim: 'kg'})
+const f_inertia_hollow_cyl = compile('(1/2) * m * (a^2 + b^2)')
 
 /**
  * Returns the moment of inertia of the following sphere through it's center:
@@ -91,8 +112,41 @@ const f_inertia_cyl = compile('(1/2) * m * (r^2)')
  * @returns moment of inertia of a cube a,b with the mass m.
  */
  export const inertia_sphere = (r: Units, m: Units): Unit => 
- calculate_eval(f_inertia_cyl,
+ calculate_eval(f_inertia_sphere,
    {name: 'r', val: r, dim: 'm'},
    {name: 'm', val: m, dim: 'kg'})
 const f_inertia_sphere = compile('(2/3) * m * (r^2)')
 
+/**
+ * Returns the moment of inertia of the following rod along it's center axis:
+ * @example
+ * 
+ *  ===|===       I=1/12 m l^2
+ *  ←--l--→
+ * 
+ * @param l Length
+ * @param m Mass
+ * @returns moment of inertia of a cube a,b with the mass m.
+ */
+ export const inertia_rod = (l: Units, m: Units): Unit => 
+ calculate_eval(f_inertia_rod,
+   {name: 'l', val: l, dim: 'm'},
+   {name: 'm', val: m, dim: 'kg'})
+const f_inertia_rod = compile('(1/12) * m * (l^2)')
+
+/**
+ * Returns the moment of inertia of the following rod along it's edge:
+ * @example
+ * 
+ *     |===       I=1/3 m l^2
+ *      ←l→
+ * 
+ * @param l Length
+ * @param m Mass
+ * @returns moment of inertia of a cube a,b with the mass m.
+ */
+ export const inertia_rod_edge = (l: Units, m: Units): Unit => 
+ calculate_eval(f_inertia_rod_edge,
+   {name: 'l', val: l, dim: 'm'},
+   {name: 'm', val: m, dim: 'kg'})
+const f_inertia_rod_edge = compile('(1/3) * m * (l^2)')
