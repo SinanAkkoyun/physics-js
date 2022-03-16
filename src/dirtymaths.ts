@@ -10,7 +10,7 @@ import { add, subtract, toUnit, u } from "./util/util";
  * @param func Function that only takes the param x: Unit
  * @param result The value you are aiming for
  */
-export function solve (func: (x: Unit) => Unit, range: UnitRange, result: Units, verbose: boolean = false) {
+export function solve (func: (x: Unit) => Unit, range: UnitRange, result: Units, verbose: boolean = false): Unit {
   result = toUnit(result) as Unit
   if(!range.incr) throw new Error('Increment in range required!')
   if(subtract(range.max, range.min).toNumber() < 0) throw new Error('Range max is smaller than range min!')
@@ -32,4 +32,6 @@ export function solve (func: (x: Unit) => Unit, range: UnitRange, result: Units,
   }
 
   console.log(`[[x=${nearestX}]] -> Nearest: ${nearestY}; Aim: ${result}`)
+
+  return nearestX
 }

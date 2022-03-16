@@ -1,6 +1,6 @@
 import { compile, evaluate, unit, Unit } from "mathjs";
-import { Units } from "./types/dimension";
-import { calculate_eval, onlyUnit, toUnit, u } from "./util/util";
+import { Units } from "../types/dimension";
+import { add, onlyUnit, toUnit, calculate_eval, validate_dimension, validate_dimensions, validate_units, validate_units_arr, u } from "../util/util";
 
 const materials = [
   'aluminium',
@@ -47,3 +47,27 @@ export const mass = (vol: Units, mat?: Material, dens?: Units) => {
     {name: 'v', val: vol, dim: 'cm^3'})
 }
 const f_mass = compile('p*v')
+
+/**
+ * Returns the center of mass on a one dimensional axis.
+ * @param obj Object containing m: Mass and d: Distance
+ * @returns Center of mass
+ */
+ export const center_of_mass = (...obj: {m: Units, d: Units}[]) => {
+  const objects = obj.map(object => {
+    validate_units(object.m)
+    validate_units(object.d)
+    object.m = u(object.m)
+    object.d = u(object.d)
+    return object
+  }) as {m: Unit, d: Unit}[]
+
+  let sumMD = u('0 kg m')
+  let sumM = u('0 kg')
+  objects.map((object) => {
+    sumMD = add(sumMD, object.m.multiply(object.d))
+    sumM = add(sumM, object.m)
+  })
+
+  return sumMD.divide(sumM)
+}

@@ -1,6 +1,6 @@
 import { compile } from "mathjs"
-import { Units } from "./types/dimension"
-import { calculate_eval, toUnit } from "./util/util"
+import { Units } from "../types/dimension"
+import { calculate_eval } from "../util/util"
 
 /**
  * Returns the volume of a cylinder with the radius r and height h
