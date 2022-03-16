@@ -3,7 +3,7 @@ import { solve } from './dirtymaths'
 import { inertia_cube, inertia_cube_edge, inertia_hollow_cyl, inertia_parallel_axis } from './formulas/inertia'
 import { center_of_mass, mass } from './formulas/mass'
 import { vol_hollow_cyl } from './formulas/volume'
-import { add, s, u } from './util/util'
+import { add, s, subtract, u } from './util/util'
 
 // POV arm inertia
 const blockMass = mass('1.8mm * 2.2mm * 1mm', 'formlabs resin')
@@ -29,5 +29,7 @@ const distance = solve((x: Unit) => inertia_parallel_axis(inertia_cube('4mm', '3
 
 console.log(`CoM sys: ${center_of_mass({m: counterMass, d: distance.multiply(u('-1'))},
                            {m: add(add(cylMass, bearingMass), blockMass), d: comArm})} | CoM arm: ${comArm}`)
+
+console.log(`Centrifugal balance: ${subtract(add(add(cylMass, bearingMass), blockMass).multiply(comArm), counterMass.multiply(distance)).to('g um')}`)
 
 console.log(`plastic: ${add(blockMass, cylMass)} | bearing: ${bearingMass}`)

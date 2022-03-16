@@ -35,7 +35,7 @@ export const density = new Map<Material, Unit>([
  * @param vol Volume
  * @param mat Material or Density
  */
-export const mass = (vol: Units, mat?: Material, dens?: Units) => {
+export const mass = (vol: Units, mat?: Material, dens?: Units): Unit => {
   let uDens: Unit
   if(mat) uDens = density.get(mat)
   if(dens) uDens = onlyUnit('g/cm^3')(toUnit(dens))
@@ -53,7 +53,7 @@ const f_mass = compile('p*v')
  * @param obj Object containing m: Mass and d: Distance
  * @returns Center of mass
  */
- export const center_of_mass = (...obj: {m: Units, d: Units}[]) => {
+ export const center_of_mass = (...obj: {m: Units, d: Units}[]): Unit => {
   const objects = obj.map(object => {
     validate_units(object.m)
     validate_units(object.d)
