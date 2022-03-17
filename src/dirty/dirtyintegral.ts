@@ -17,7 +17,7 @@ export const integrate_over_shapes = (...objects: ShapeObject[]) => {
           const dist = add(shape.b.multiply(u(iy)), shape.pos.y)
 
           // integral = add(integral, centrifugal_force(massSub, '1 s^-1', dist))
-          integral = add(integral, dist.divide(u(subdivide)))
+          integral = add(integral, dist.divide(u(subdivide*objects.length)))
         }
       // }
     }

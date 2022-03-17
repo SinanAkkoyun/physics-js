@@ -43,7 +43,7 @@ console.log(`\n\nCoM sys (centrifugal equality): ${center_of_mass({m: counterMas
 
 console.log('\n\n\n\n')
 
-// I just proved that integrating over an area with a linear distance correlation is the same as just clasically using the center of mass -.-
+// I just proved that integrating over an area with a linear distance correlation is the same as just clasically using the center of mass -.- (yayy)
 console.log(`CentrifugalForce: ${centrifugal_force('5kg', '1 s^-1', '6m')}
-IntegralCentrifugalForce: ${integrate_over_shapes(new ShapeObject(new Cube(u('4m'), u('400m'), {x: u('-1m'), y: u('6m - 400m / 2')}), u('5kg'))) }`)
-                                                  //  new ShapeObject(new Cube(u('2m'), u('100m'), {x: u('-1m'), y: u('6m')}), u('5kg')))}`)
+IntegralCentrifugalForce: ${integrate_over_shapes(new ShapeObject(new Cube(u('4m'), u('4m'), {x: u('-1m'), y: u('6m - 4m / 2')}), u('5kg')),
+                                                  new ShapeObject(new Cube(u('4m'), u('4m'), {x: u('-1m'), y: u('8m - 4m / 2')}), u('5kg')))}`)
