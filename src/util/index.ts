@@ -1,13 +1,14 @@
-import { BigNumber, EvalFunction, evaluate, format, FormatOptions, Fraction, MathJSON, unit, Unit, UnitComponent } from "mathjs";
+import { BigNumber, compile, EvalFunction, evaluate, format, FormatOptions, Fraction, MathJSON, unit, Unit, UnitComponent } from "mathjs";
 import math = require("mathjs");
 import { Dimension, Units } from "../types/dimension";
 
 export const add = (a: Unit, b: Unit): Unit => math.add(a, b) as Unit
 export const subtract = (a: Unit, b: Unit): Unit => math.subtract(a, b) as Unit
 
-export const toUnit = (u: Units) => {
+export const toUnit = (u: Units | number) => {
   try {
     if(typeof(u) === 'string') return unit(u)
+    if(typeof(u) === 'number') return unit(u.toString())
     return u
   } catch (err) {
     if(err instanceof SyntaxError) {
@@ -26,7 +27,7 @@ export const validate_units_arr = (u: Units[]) => {
 export const onlyUnit = (unitString: string) => (u: Unit) => { if (!u.equalBase(unit(unitString))) throw new Error(unitString); return u }
 
 export const s = (u: Unit) => format(u, {precision: 14}) // precision: 14
-export const u = (unitString: Units): Unit => toUnit(unitString)
+export const u = (unitString: Units | number): Unit => toUnit(unitString)
 
 export const calculate_eval = (evalFunction: EvalFunction, ...d: Dimension[]) => {
   const dimensions = d.map(dimension => validate_dimension(dimension))
@@ -48,3 +49,6 @@ export const validate_dimension = (dimension: Dimension) => {
 export const validate_dimensions = (...dimensions: Dimension[]) => {
   dimensions.map(dimension => validate_dimension(dimension))
 }
+
+export const distance_to_origin = (x: Unit, y: Unit) => f_distance_to_origin.evaluate({x, y})
+const f_distance_to_origin = compile('sqrt(x^2+y^2)')

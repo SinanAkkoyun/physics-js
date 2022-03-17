@@ -1,7 +1,7 @@
 import { abs, compare, format, number, setPowerset, unit, Unit } from "mathjs";
-import { Units } from "./types/dimension";
-import { UnitFunction, UnitRange } from "./types/unittypes";
-import { add, subtract, toUnit, u } from "./util/util";
+import { Units } from "../types/dimension";
+import { UnitFunction, UnitRange } from "../types/unittypes";
+import { add, subtract, toUnit, u } from "../util";
 
 
 // TODO: implement aristoteles nearing 

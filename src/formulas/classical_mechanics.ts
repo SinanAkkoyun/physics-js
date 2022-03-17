@@ -1,6 +1,6 @@
 import { compile, Unit } from "mathjs"
 import { Units } from "../types/dimension"
-import { calculate_eval } from "../util/util"
+import { calculate_eval } from "../util"
 
 /**
  * Calculates the centrifugal force.
@@ -12,6 +12,6 @@ import { calculate_eval } from "../util/util"
  export const centrifugal_force = (m: Units, w: Units, r: Units): Unit => 
  calculate_eval(f_centrifugal_force,
    {name: 'm', val: m, dim: 'kg'},
-   {name: 'w', val: w, dim: '1/s'},
+   {name: 'w', val: w, dim: 's^-1'},
    {name: 'r', val: r, dim: 'm'})
 const f_centrifugal_force = compile('m * w^2 * r')

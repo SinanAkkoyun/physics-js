@@ -1,7 +1,7 @@
 import { Unit, evaluate, compile, add, EvalFunction } from 'mathjs'
 import { Dimension, Units } from '../types/dimension'
 import { AxisLocation } from '../types/positional'
-import { calculate_eval, onlyUnit, s, toUnit } from '../util/util'
+import { calculate_eval, onlyUnit, s, toUnit } from '../util'
 // https://engineeringstatics.org/Chapter_10-moment-of-inertia-of-composite-shapes.html
 // https://engineeringstatics.org/parallel-axis-theorem-section.html#MOI-table
 

@@ -5,8 +5,8 @@
   "main": "src/index.ts",
   "scripts": {
     "build": "tsc --project .",
-    "dev": "ts-node-dev src/main.ts",
-    "start": "npm run build && node dist/main.js"
+    "dev": "ts-node-dev src/index.ts",
+    "start": "npm run build && node dist/index.js"
   },
   "author": "",
   "license": "ISC",
